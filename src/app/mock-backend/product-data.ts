@@ -13,6 +13,13 @@ export const products: Product[]  = [
         price: 550,
         name: 'Jasmine Tea',
         description: 'Sweet floral drink'
+    },
+    {
+        id: 2,
+        imageUrl: '',
+        price: 650,
+        name: 'Oolong Tea',
+        description: 'Black rich drink'
     }
 ]
 
