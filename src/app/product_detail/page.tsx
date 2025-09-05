@@ -2,10 +2,11 @@
 
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { Suspense } from "react";
 import { products } from '@/app/mock-backend/product-data';
 import formatPrice from "../utils/formatPrice";
 
-export default function ProductDetail() {
+function ProductDetailContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get('id');
   
@@ -32,7 +33,7 @@ export default function ProductDetail() {
               <span className="text-6xl">❌</span>
             </div>
             <h1 className="text-4xl font-bold text-gray-800 mb-4">Product Not Found</h1>
-            <p className="text-gray-600 mb-8">The product you're looking for doesn't exist.</p>
+            <p className="text-gray-600 mb-8">The product you&apos;re looking for doesn&apos;t exist.</p>
             <Link 
               href="/products" 
               className="bg-gradient-to-r from-orange-500 to-pink-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-orange-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
@@ -168,5 +169,32 @@ export default function ProductDetail() {
         </div>
       </main>
     </div>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-pink-50 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-orange-200 to-pink-200 rounded-full opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-gradient-to-tr from-amber-200 to-orange-200 rounded-full opacity-20 animate-pulse delay-1000"></div>
+      </div>
+      <main className="relative z-10 min-h-screen flex items-center justify-center px-8">
+        <div className="text-center animate-fade-in-up">
+          <div className="w-32 h-32 bg-gradient-to-r from-orange-200 to-pink-200 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <span className="text-6xl">🧋</span>
+          </div>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Loading...</h1>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default function ProductDetail() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ProductDetailContent />
+    </Suspense>
   );
 }

@@ -87,7 +87,7 @@ export default function Products() {
           {/* Call to Action */}
           <div className="text-center mt-16 animate-fade-in-up delay-1000">
             <div className="bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-gray-800 mb-4">Can't decide?</h2>
+              <h2 className="text-3xl font-bold text-gray-800 mb-4">Can&apos;t decide?</h2>
               <p className="text-gray-600 mb-6">Try our signature blend or ask our friendly staff for recommendations!</p>
               <Link 
                 href="/cart" 
