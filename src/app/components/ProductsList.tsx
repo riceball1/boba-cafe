@@ -3,7 +3,7 @@ import formatPrice from "../utils/formatPrice"
 
 export default function ProductsList({ products }: { products: Product[] }) {
     return (
-        <div>
+        <div className="">
             {products.map((product) => (
                 <li key={product.id} className="text-lg text-bold">{product.name} | price: {formatPrice(product.price)}</li>
             ))}
