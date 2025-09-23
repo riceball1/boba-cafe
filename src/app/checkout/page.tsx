@@ -149,16 +149,6 @@ export default function Checkout() {
               </form>
             </div>
           </div>
-
-          {/* Back to Cart */}
-          <div className="text-center mt-8 animate-fade-in-up delay-700">
-            <Link 
-              href="/cart" 
-              className="inline-flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors duration-300"
-            >
-              ← Back to Cart
-            </Link>
-          </div>
         </div>
       </main>
     </div>

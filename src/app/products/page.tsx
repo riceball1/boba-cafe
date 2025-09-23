@@ -97,16 +97,6 @@ export default function Products() {
               </Link>
             </div>
           </div>
-
-          {/* Back to Home */}
-          <div className="text-center mt-8 animate-fade-in-up delay-1200">
-            <Link 
-              href="/" 
-              className="inline-flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors duration-300"
-            >
-              ← Back to Home
-            </Link>
-          </div>
         </div>
       </main>
     </div>
