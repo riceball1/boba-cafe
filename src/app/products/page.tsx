@@ -1,10 +1,29 @@
 "use client";
 
 import Link from "next/link";
-import { products } from '@/app/mock-backend/product-data';
 import formatPrice from "../utils/formatPrice";
+import { useEffect, useState } from "react";
 
 export default function Products() {
+
+  const [products, setProducts] = useState([])
+
+
+    useEffect(() => {
+      const fetchProducts = async () => {
+        // fetch products
+        const urlPath = `http://localhost:3000/api/products`
+        const res = await fetch(urlPath);
+        const data = await res.json();
+
+        setProducts(data.products)
+      }
+
+      fetchProducts()
+    }, [])
+
+
+
   const addToCart = (productId: number) => {
     // In a real app, this would add the product to cart state
     console.log(`Add product ${productId} to cart`);
@@ -40,49 +59,51 @@ export default function Products() {
           </div>
 
           {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {products.map((product, index) => (
-              <div 
-                key={product.id} 
-                className="bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                {/* Product Image Placeholder */}
-                <div className="w-full h-48 bg-gradient-to-r from-orange-200 to-pink-200 rounded-xl flex items-center justify-center mb-6">
-                  <span className="text-6xl">🧋</span>
-                </div>
-                
-                {/* Product Info */}
-                <div className="text-center">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h3>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  
-                  {/* Price */}
-                  <div className="mb-6">
-                    <span className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-                      {formatPrice(product.price)}
-                    </span>
+            {!products.length && <h1 className="text-black">Loading products...</h1>}
+
+            {products?.length > 0 && (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {products.map((product, index) => (
+                <div 
+                  key={product.id} 
+                  className="bg-white/50 backdrop-blur-sm rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 animate-fade-in-up"
+                  style={{ animationDelay: `${index * 200}ms` }}
+                >
+                  {/* Product Image Placeholder */}
+                  <div className="w-full h-48 bg-gradient-to-r from-orange-200 to-pink-200 rounded-xl flex items-center justify-center mb-6">
+                    <span className="text-6xl">🧋</span>
                   </div>
                   
-                  {/* Action Buttons */}
-                  <div className="space-y-3">
-                    <button 
-                      onClick={() => addToCart(product.id)}
-                      className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                    >
-                      Add to Cart
-                    </button>
-                    <Link 
-                      href={`/product_detail?id=${product.id}`}
-                      className="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transform hover:scale-105 transition-all duration-300 block text-center"
-                    >
-                      View Details
-                    </Link>
+                  {/* Product Info */}
+                  <div className="text-center">
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{product.name}</h3>
+                    <p className="text-gray-600 mb-4">{product.description}</p>
+                    
+                    {/* Price */}
+                    <div className="mb-6">
+                      <span className="text-3xl font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
+                        {formatPrice(product.price)}
+                      </span>
+                    </div>
+                    
+                    {/* Action Buttons */}
+                    <div className="space-y-3">
+                      <button 
+                        onClick={() => addToCart(product.id)}
+                        className="w-full bg-gradient-to-r from-orange-500 to-pink-500 text-white py-3 rounded-xl font-semibold hover:from-orange-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                      >
+                        Add to Cart
+                      </button>
+                      <Link 
+                        href={`/product_detail?id=${product.id}`}
+                        className="w-full border-2 border-orange-500 text-orange-500 py-3 rounded-xl font-semibold hover:bg-orange-500 hover:text-white transform hover:scale-105 transition-all duration-300 block text-center"
+                      >
+                        View Details
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>)}
 
           {/* Call to Action */}
           <div className="text-center mt-16 animate-fade-in-up delay-1000">

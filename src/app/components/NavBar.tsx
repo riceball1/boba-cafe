@@ -17,9 +17,6 @@ export default function NavBar() {
                     <li>
                         <Link href="/cart" className="text-gray-700 hover:text-orange-500 transition-colors">Cart</Link>
                     </li>
-                    <li>
-                        <Link href="/checkout" className="text-gray-700 hover:text-orange-500 transition-colors">Checkout</Link>
-                    </li>
                 </ul>
             </div>
         </nav>

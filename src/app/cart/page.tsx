@@ -2,17 +2,47 @@
 
 import Link from "next/link";
 import formatPrice from "../utils/formatPrice";
+import { useEffect, useState } from "react";
 
 export default function Cart() {
-  // Mock cart data - in a real app this would come from state/context
-  const cartItems = [
-    { id: 1, name: 'Jasmine Tea', price: 550, quantity: 2, description: 'Sweet floral drink' },
-    { id: 2, name: 'Oolong Tea', price: 650, quantity: 1, description: 'Black rich drink' }
-  ];
 
-  const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const tax = subtotal * 0.08; // 8% tax
-  const total = subtotal + tax;
+
+  const [cartItems, setCartItems] = useState([])
+  const [subtotal, setSubtotal] = useState(0.00)
+  const [tax, setTax] = useState(0.00)
+  const [total, setTotal] = useState(0.00)
+
+  useEffect(() => {
+
+  const fetchCartItems = async () => {
+    // const userId needs to be passed to the url path
+    try {
+      const urlPath = 'http://localhost:3000/api/cart'
+      const res = await fetch(urlPath)
+      const data = await res.json()
+
+      setCartItems(data.cartItems)
+    } catch(error) {
+      console.error('Error fetching: ' + error)
+    }
+  }
+
+  fetchCartItems()
+  }, [])
+
+
+  useEffect(() => {
+    if (cartItems?.length) {
+      setSubtotal(cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0))
+
+       setTax(subtotal * 0.08) // 8% tax
+      setTotal(subtotal + tax)
+    }
+  })
+
+  // const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  // const tax = subtotal * 0.08; // 8% tax
+  // const total = subtotal + tax;
 
   const updateQuantity = (id: number, newQuantity: number) => {
     // In a real app, this would update the cart state
