@@ -60,7 +60,7 @@ export default function Products() {
           </div>
 
           {/* Products Grid */}
-            {!products && <h1 className="text-black">Loading products...</h1>}
+            {!products && <h1 className="text-black text-center text-2xl">Loading products...</h1>}
 
             {products && (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product, index) => (
