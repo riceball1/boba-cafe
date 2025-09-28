@@ -20,7 +20,7 @@ export default function Cart() {
   const fetchCartItems = async () => {
     // const userId needs to be passed to the url path
     try {
-      const urlPath = 'http://localhost:3000/api/cart'
+      const urlPath = '/api/cart'
       const res = await fetch(urlPath)
       const data = await res.json()
 
