@@ -6,6 +6,10 @@ export type Product = {
     description: string
 }
 
+export type CartItem = Product & {
+    quantity: number
+}
+
 export const products: Product[]  = [
     {
         id: 1,

@@ -3,12 +3,15 @@
 import Link from "next/link";
 import formatPrice from "../utils/formatPrice";
 import { useEffect, useState } from "react";
+import { CartItem } from "@/app/mock-backend/product-data";
 
 export default function Cart() {
 
 
-  const [cartItems, setCartItems] = useState([])
-  const [subtotal, setSubtotal] = useState(0.00)
+  const [cartItems, setCartItems] = useState<CartItem[]>([
+    // your cart items
+  ]);
+  const [subtotal, setSubtotal] = useState(0);
   const [tax, setTax] = useState(0.00)
   const [total, setTotal] = useState(0.00)
 
@@ -39,10 +42,6 @@ export default function Cart() {
       setTotal(subtotal + tax)
     }
   })
-
-  // const subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  // const tax = subtotal * 0.08; // 8% tax
-  // const total = subtotal + tax;
 
   const updateQuantity = (id: number, newQuantity: number) => {
     // In a real app, this would update the cart state

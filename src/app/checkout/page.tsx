@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import formatPrice from "../utils/formatPrice";
 
 export default function Checkout() {

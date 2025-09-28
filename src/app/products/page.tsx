@@ -3,10 +3,11 @@
 import Link from "next/link";
 import formatPrice from "../utils/formatPrice";
 import { useEffect, useState } from "react";
+import { Product } from "../mock-backend/product-data";
 
 export default function Products() {
 
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<Product[] | null>(null)
 
 
     useEffect(() => {
@@ -59,9 +60,9 @@ export default function Products() {
           </div>
 
           {/* Products Grid */}
-            {!products.length && <h1 className="text-black">Loading products...</h1>}
+            {!products && <h1 className="text-black">Loading products...</h1>}
 
-            {products?.length > 0 && (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {products && (<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products.map((product, index) => (
                 <div 
                   key={product.id} 
