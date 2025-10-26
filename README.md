@@ -1,4 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Boba Cafe - Full-Stack E-commerce Demo
+
+A modern, responsive e-commerce application built with Next.js 15 that demonstrates a complete checkout flow for a bubble tea cafe. This project showcases full-stack development capabilities, from dynamic product catalogs to secure checkout processes.
+
+## 🚀 What This Project Demonstrates
+
+This isn't just another e-commerce site—it's a comprehensive showcase of modern web development practices and software engineering principles. Built with the latest React 19 and Next.js 15 features, it demonstrates proficiency in:
+
+- **Full-Stack Development**: Seamless integration of frontend React components with backend API routes
+- **Type-Safe Architecture**: Complete TypeScript implementation with custom interfaces and type definitions
+- **Modern UI/UX**: Responsive design with Tailwind CSS, smooth animations, and intuitive user flows
+- **State Management**: Client-side cart management with real-time price calculations
+- **API Design**: RESTful endpoints following industry best practices
+- **Component Architecture**: Reusable, maintainable components with clear separation of concerns
+
+## 🛍️ Complete E-commerce Flow
+
+The application implements a full customer journey:
+- **Product Discovery**: Dynamic product catalog with fetching from API endpoints
+- **Shopping Cart**: Add/remove items, quantity management, real-time price updates
+- **Checkout Process**: Secure form handling with validation and order summary
+- **Responsive Design**: Optimized for desktop, tablet, and mobile experiences
+
 
 ## Getting Started
 
@@ -16,21 +38,3 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
